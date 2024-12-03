@@ -1,4 +1,4 @@
-//! A respectful implementation of user directories for Rust.
+//! A respectful, XDG-first user directories implementation for obtaining the home, cache, config, data, runtime, and state directories.
 //!
 //! The library provides the location of these directories by leveraging the mechanisms defined by
 //!
