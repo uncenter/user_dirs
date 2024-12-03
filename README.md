@@ -53,6 +53,8 @@ user_dirs::state_dir();
 // Linux => Some(/home/leah/.local/state)
 ```
 
+The crate also exposes an `os` module, which provides functions for obtaining the operating system specified directory locations without XDG variable involvement. (This replicates the behavior of the `dirs` crate.) Without XDG variables set, `user_dirs::config_dir()` and `user_dirs::os::config_dir()` should be equivalent.
+
 ## License
 
 [MIT](LICENSE)
