@@ -1,0 +1,16 @@
+[package]
+name = "user_dirs"
+version = "0.1.0"
+authors = ["uncenter <uncenter@uncenter.dev>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/uncenter/user_dirs"
+repository = "https://github.com/uncenter/user_dirs"
+edition = "2021"
+
+[dependencies]
+home = "0.5.9"
+
+[lints.clippy]
+all = "warn"
+pedantic = "warn"
