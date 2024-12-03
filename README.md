@@ -18,7 +18,7 @@ I'm a big fan of the [`etcetera`](https://docs.rs/etcetera/latest/etcetera/) lib
 
 For a user named Leah:
 
-```rs
+```rust
 user_dirs::home_dir();
 // See the [`home`](https://docs.rs/home) crate.
 
