@@ -8,50 +8,49 @@ The library provides the location of these directories by leveraging the mechani
 - the [Known Folder](https://msdn.microsoft.com/en-us/library/windows/desktop/dd378457.aspx) API on Windows,
 - and the [Standard Directories](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW6) guidelines on macOS.
 
-The key differentiator of the `user_dirs` crate is that it always prefers user-defined XDG variables, regardless of platform. Then and only then are system-defined directories used.
+## Why?
+
+The key differentiator of the `user_dirs` crate is that it always prefers user-defined XDG variables, regardless of platform. Then and only then are system-defined directories used. The developer of the popular `dirs` and `directories` crates [has refused time and time again to respect explicitly-defined XDG variables](https://github.com/dirs-dev/directories-rs/issues/47#issuecomment-478337412).
+
+I'm a big fan of the [`etcetera`](https://docs.rs/etcetera/latest/etcetera/) library, however it overcomplicates the process by providing multiple strategies; `user_dirs` picks one.
 
 ## Examples
 
-All directories are based off of the user's home directory, which is provided by the [`home`](https://docs.rs/home) crate. The home directory can be accessed through the `home` field of `user_dirs::Directories`, or directly from the exported `user_dirs::home_dir` wrapper function used internally.
-
-For a user named Alice:
+For a user named Leah:
 
 ```rs
-let dirs = user_dirs::dirs().unwrap();
-// => user_dirs::Directories
+user_dirs::home_dir();
+// See the [`home`](https://docs.rs/home) crate.
 
-dirs.home;
-// (See above.)
-
-dirs.cache;
+user_dirs::cache_dir();
 // XDG? => $XDG_CACHE_HOME
-// macOS => /Users/Alice/Library/Caches
-// Windows => C:\Users\Alice\AppData\Local
-// Linux => /home/alice/.cache
+// macOS => /Users/Leah/Library/Caches
+// Windows => C:\Users\Leah\AppData\Local
+// Linux => /home/leah/.cache
 
-dirs.config;
+user_dirs::config_dir();
 // XDG? => $XDG_CONFIG_HOME
-// macOS => /Users/Alice/Library/Preferences
-// Windows => C:\Users\Alice\AppData\Roaming
-// Linux => /home/alice/.config
+// macOS => /Users/Leah/Library/Preferences
+// Windows => C:\Users\Leah\AppData\Roaming
+// Linux => /home/leah/.config
 
-dirs.data;
+user_dirs::data_dir();
 // XDG? => $XDG_DATA_HOME
-// macOS => /Users/Alice/Library/Application Support
-// Windows => C:\Users\Alice\AppData\Roaming
-// Linux => /home/alice/.local/share
+// macOS => /Users/Leah/Library/Application Support
+// Windows => C:\Users\Leah\AppData\Roaming
+// Linux => /home/leah/.local/share
 
-dirs.runtime;
+user_dirs::runtime_dir();
 // XDG? => Some($XDG_RUNTIME_DIR)
 // macOS => None
 // Windows => None
 // Linux => None
 
-dirs.state;
+user_dirs::state_dir();
 // XDG? => Some($XDG_STATE_HOME)
 // macOS => None
 // Windows => None
-// Linux => Some(/home/alice/.local/state)
+// Linux => Some(/home/leah/.local/state)
 ```
 
 ## License
