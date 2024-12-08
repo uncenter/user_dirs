@@ -1,6 +1,6 @@
 [package]
 name = "user_dirs"
-version = "0.1.0"
+version = "0.2.0"
 description = "A respectful, XDG-first user directories implementation for obtaining the home, cache, config, data, runtime, and state directories"
 authors = ["uncenter <uncenter@uncenter.dev>"]
 license = "MIT"
